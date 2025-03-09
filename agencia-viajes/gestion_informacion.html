@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+    <h1>Agencia de Viajes</h1><br><br>
+
+    <a href="consultar_hoteles.php">Ver Hoteles con más de 2 reservas</a>
+
+    <div class="main-container">
+        <!-- Formulario para vuelos -->
+        <div class="form-container">
+            <h2>Registrar Vuelo</h2>
+            <form action="insertar_vuelo.php" method="post" name="formVuelo" onsubmit="return validarVuelo()">
+                <input type="text" name="origen" placeholder="Origen" required>
+                <input type="text" name="destino" placeholder="Destino" required>
+                <input type="date" name="fecha" required>
+                <input type="number" name="plazas" placeholder="Plazas Disponibles" required>
+                <input type="number" name="precio" placeholder="Precio" required>
+                <input type="submit" value="Registrar Vuelo">
+            </form>
+        </div>
+        <!-- Formulario para Hoteles -->
+        <div class="form-container">
+            <h2>Registrar Hotel</h2>
+            <form action="insertar_hotel.php" method="post" name="formHotel" onsubmit="return validarHotel()">
+                <input type="text" name="nombre" placeholder="Nombre del Hotel" required>
+                <input type="text" name="ubicacion" placeholder="Ubicación" required>
+                <input type="number" name="habitaciones" placeholder="Habitaciones Disponibles" required>
+                <input type="number" step="0.01" name="tarifa" placeholder="Tarifa por Noche" required>
+                <input type="submit" value="Registrar Hotel">
+            </form>
+        </div>
+    </div>
+    <!-- Validamos -->
+    <script>
+        function validarVuelo() {
+            let plazas = document.forms["formVuelo"]["plazas"].value;
+            let precio = decument.forms["formVuelo"]["precio"].value;
+
+            if (plazas <= 0) {
+                alert("Las plazas disponibles deben ser mayores a 0.");
+                return false;
+            }
+            if (precio <= 0) {
+                alert("El precio debe ser mayor a 0.");
+                return false;
+            }
+            return true;
+        }
+
+        function validarHotel() {
+            let habitaciones = document.forms["formHotel"]["habitaciones"].value;
+            let tarifa = document.forms["formHotel"]["tarifa"].value;
+
+            if (habitaciones <= 0) {
+                alert("Las habitaciones deben ser mayor a 0.");
+                return false;
+            }
+            if (tarifa <= 0) {
+                alert("La tarfifa debe ser mayor a 0.");
+                return false;
+            }
+            return true;
+        }
+    </script>
+</body>
+</html>
