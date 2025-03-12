@@ -1,6 +1,6 @@
 <?php
 require_once 'vendor/autoload.php';
-// base de datos.
+// base de datos otra prueba de modificación
 $dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
 $dotenv->load();
 
